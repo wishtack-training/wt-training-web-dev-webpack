@@ -4,7 +4,7 @@ if [ "$1" == "--global" ]
 then
 
     apt-get update \
-        && apt-get install phantomjs python-pip python-dev libxml2-dev libxslt-dev mongodb \
+        && apt-get install -y phantomjs python-pip python-dev libxml2-dev libxslt-dev mongodb \
         && apt-get clean \
         && sed -i s/^journal=true/journal=false/ /etc/mongodb.conf \
         && echo nojournal=true >> /etc/mongodb.conf \

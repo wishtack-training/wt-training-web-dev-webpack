@@ -1,6 +1,6 @@
 {
     "name": "wt-djangular",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "dependencies": {
         "del": "1.2.0",
         "gulp": "git://github.com/gulpjs/gulp.git#4.0",
