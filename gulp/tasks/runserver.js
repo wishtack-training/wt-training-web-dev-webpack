@@ -14,7 +14,7 @@ module.exports = function runserver(done) {
 
     var _runserver = function _runserver(done) {
 
-        var argv = ['runserver'];
+        var argv = ['runserver', '0.0.0.0:8000'];
 
         child_process.spawn('./manage.py', argv, {
             stdio: 'inherit'
