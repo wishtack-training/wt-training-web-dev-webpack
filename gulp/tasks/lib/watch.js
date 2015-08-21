@@ -27,7 +27,7 @@ module.exports = function watchFactory(args) {
         /* Start livereload. */
         plugins.livereload.listen({port: 8729});
 
-        gulp.watch(config.appAngularPattern, buildAppAndReload);
+        gulp.watch(config.appFrontendPattern, buildAppAndReload);
         gulp.watch(config.appDjangoTemplatesPattern, buildAppAndReload);
         gulp.watch(config.bowerJsonPath, gulp.series('bower'));
 

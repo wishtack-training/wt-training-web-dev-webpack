@@ -10,9 +10,9 @@ module.exports = function configDefault() {
     var config = {};
 
     config.appPath = 'app';
-    config.appAngularPath = config.appPath + '/angular';
-    config.appAngularPattern = config.appAngularPath + '/**';
-    config.appAngularTemplatesPattern = config.appAngularPath + '/**/*.html';
+    config.appFrontendPath = config.appPath + '/frontend';
+    config.appFrontendPattern = config.appFrontendPath + '/**';
+    config.appFrontendTemplatesPattern = config.appFrontendPath + '/**/*.html';
     config.appDjangoTemplatesPath = config.appPath + '/templates';
     config.appDjangoTemplatesPattern = config.appDjangoTemplatesPath + '/**/*.html';
     config.appImagesPattern = config.appPath + '/images/**';
@@ -20,7 +20,7 @@ module.exports = function configDefault() {
     config.distPath = 'dist';
     config.distAssetsPath = config.distPath + '/assets';
     config.distAssetsPattern = config.distAssetsPath + '/**';
-    config.distAssetsAngularTemplatesPath = config.distAssetsPath + '/angular';
+    config.distAssetsFrontendTemplatesPath = config.distAssetsPath + '/frontend';
     config.distAssetsImagesPath = config.distAssetsPath + '/images';
     config.djangoTemplatesDirectory = 'templates';
 

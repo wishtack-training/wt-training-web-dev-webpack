@@ -88,14 +88,14 @@ module.exports = function buildAppFactory(args) {
         /**
          * Copy and rev angular templates then generate file rev mapping manifest.
          */
-        var _copyAngularTemplates = function _copyAngularTemplates() {
+        var _copyFrontendTemplates = function _copyFrontendTemplates() {
 
-            return gulp.src(config.appAngularTemplatesPattern)
+            return gulp.src(config.appFrontendTemplatesPattern)
                 .pipe(plugins.if(plumber, plugins.plumber()))
                 .pipe(_revReplaceImages())
                 .pipe(plugins.rev())
-                .pipe(gulp.dest(config.distAssetsAngularTemplatesPath))
-                .pipe(plugins.rev.manifest('rev-manifest-angular-templates.json'))
+                .pipe(gulp.dest(config.distAssetsFrontendTemplatesPath))
+                .pipe(plugins.rev.manifest('rev-manifest-frontend-templates.json'))
                 .pipe(gulp.dest(config.distPath));
 
         };
@@ -103,8 +103,8 @@ module.exports = function buildAppFactory(args) {
         /**
          * Replace revved templates.
          */
-        var _revReplaceAngularTemplates = function _revReplaceAngularTemplates() {
-            return _revReplace({manifestFilePath: config.distPath + '/rev-manifest-angular-templates.json'});
+        var _revReplaceFrontendTemplates = function _revReplaceFrontendTemplates() {
+            return _revReplace({manifestFilePath: config.distPath + '/rev-manifest-frontend-templates.json'});
         };
 
         var _usemin = function _usemin() {
@@ -132,7 +132,7 @@ module.exports = function buildAppFactory(args) {
                             jsApp: [
                                 plugins.if(plumber, plugins.plumber()),
                                 /* Replace references to angular templates and images. */
-                                _revReplaceAngularTemplates(),
+                                _revReplaceFrontendTemplates(),
                                 _revReplaceImages(),
                                 plugins.if(uglify, plugins.ngAnnotate()),
                                 plugins.if(uglify, plugins.uglify()),
@@ -156,7 +156,7 @@ module.exports = function buildAppFactory(args) {
             loadenv(),
             _clean,
             _copyImages,
-            _copyAngularTemplates,
+            _copyFrontendTemplates,
             bower ? ['bower'] : [],
             _usemin,
             'cache-manifest'

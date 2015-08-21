@@ -8,6 +8,5 @@
 
 (function () {
 
-    angular.module('app', []);
 
 })();
