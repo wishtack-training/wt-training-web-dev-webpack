@@ -115,7 +115,6 @@ module.exports = function buildAppFactory(args) {
                 /* @hack: https://github.com/zont/gulp-usemin/issues/91. */
                 .pipe(plugins.foreach(function (stream, file) {
                     return stream
-                        .pipe(plugins.if(plumber, plugins.plumber()))
                         .pipe(plugins.usemin({
                             css: [
                                 plugins.if(plumber, plugins.plumber()),
