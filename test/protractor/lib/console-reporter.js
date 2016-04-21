@@ -12,16 +12,14 @@ var ConsoleReporter = dejavu.Class.declare({
 
     $name: 'ConsoleReporter',
 
-    $constants: {
-        _STATUS_COLOR_DICT: {
-            passed: 'green',
-            failed: 'red'
-        }
+    _status_color_dict: {
+        passed: 'green',
+        failed: 'red'
     },
 
     specDone: function specDone(result) {
 
-        var color = this.$static._STATUS_COLOR_DICT[result.status];
+        var color = this._status_color_dict[result.status];
 
         colors.enabled = true;
 
