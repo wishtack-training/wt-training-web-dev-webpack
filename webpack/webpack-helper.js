@@ -9,7 +9,6 @@ class WebpackHelper {
         this.rootPath = path.join(__dirname, '..');
         
         this.distDirectoryName = 'dist';
-        this.templatesDirectoryName = 'templates';
 
         this.assetsRelativePath = 'assets';
         this.assetsScriptsRelativePath = path.join(this.assetsRelativePath, 'scripts');
