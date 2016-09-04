@@ -47,7 +47,7 @@ module.exports = webpackMerge.smart(require('./webpack.common.config'), {
             /* Coverage with istanbul. */
             {
                 test: /\.(js|ts)$/,
-                include: webpackHelper.appAngularPath,
+                include: webpackHelper.appFrontendPath,
                 loader: 'istanbul-instrumenter-loader'
             }
         ]

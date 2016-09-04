@@ -14,12 +14,12 @@ class WebpackHelper {
         this.assetsScriptsRelativePath = path.join(this.assetsRelativePath, 'scripts');
         
         this.appPath = path.join(this.rootPath, 'app');
-        this.appAngularPath = path.join(this.appPath, 'angular');
-        this.appIndexHtmlPath = path.join(this.appPath, 'templates', 'home.html');
+        this.appFrontendPath = path.join(this.appPath, 'frontend');
+        this.appIndexHtmlPath = path.join(this.appPath, 'index.html');
         this.distPath = path.join(this.rootPath, this.distDirectoryName);
-        this.distIndexHtmlRelativePath = path.join('templates', 'home.html');
+        this.distIndexHtmlRelativePath = 'index.html';
 
-        this.publicPath = '/';
+        this.publicPath = './';
 
     }
 

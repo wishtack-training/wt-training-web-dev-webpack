@@ -19,7 +19,7 @@ module.exports = {
 
     /* Angular app. */
     entry: {
-        app: path.join(webpackHelper.appAngularPath, 'bootstrap.ts')
+        app: path.join(webpackHelper.appFrontendPath, 'bootstrap.js')
     },
 
     output: {
@@ -58,7 +58,7 @@ module.exports = {
 
             /* Support for assets as revved files. */
             {
-                include: [webpackHelper.appAngularPath],
+                include: [webpackHelper.appFrontendPath],
                 test: /\.(html|gif|ico|jpg|png)$/,
                 loader: 'file-loader?name=' + path.join(webpackHelper.assetsRelativePath, '[path][name].[hash].[ext]')
             }
@@ -72,7 +72,7 @@ module.exports = {
     tslint: {
         emitErrors: false,
         failOnHint: false,
-        resourcePath: webpackHelper.appAngularPath
+        resourcePath: webpackHelper.appFrontendPath
     },
 
     /* We need this due to problems with es6-shim. */

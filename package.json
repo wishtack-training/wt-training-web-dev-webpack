@@ -1,7 +1,8 @@
 {
     "name": "wt-training-web-dev-webpack",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "dependencies": {
+        "@angular/core": "2.0.0-rc.5",
         "angular": "1.5.5",
         "angular-animate": "1.5.5",
         "angular-aria": "1.5.5",
@@ -49,11 +50,13 @@
         "webpack-livereload-plugin": "0.8.1",
         "webpack-merge": "0.13.0",
         "webpack-split-by-path": "0.0.8",
-        "zone.js": "0.6.12"
+        "zone.js": "0.6.19"
     },
     "devDependencies": {
         "babel-polyfill": "6.7.4",
+        "fetchmock": "1.0.1",
         "gulp-bump": "2.1.0",
+        "http-server": "0.9.0",
         "istanbul-instrumenter-loader": "0.2.0",
         "jasmine-core": "2.4.1",
         "karma": "0.13.22",

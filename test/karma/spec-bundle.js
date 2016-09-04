@@ -17,11 +17,13 @@
 Error.stackTraceLimit = Infinity;
 
 
-require('../../app/angular/common');
-require('angular');
-require('angular-mocks');
-require('jquery');
+require('../../app/frontend/common');
+require('zone.js/dist/zone');
+require('zone.js/dist/fake-async-test');
 require('phantomjs-polyfill');
+
+window.normalizeName = window.normalizeValue = value => value;
+require('fetchmock');
 
 /*
  Ok, this is kinda crazy. We can use the the context method on
@@ -32,7 +34,7 @@ require('phantomjs-polyfill');
  any file that ends with spec.js and get its path. By passing in true
  we say do this recursively
  */
-var testContext = require.context('.', true, /\.spec\.ts/);
+var testContext = require.context('.', true, /\.spec\.js/);
 
 // get all the files, for each file, call the context function
 // that will require the file and load it up here. Context will
