@@ -7,20 +7,19 @@
 
 module.exports = function watch(done) {
 
+    var minimist = require('minimist');
+    var options = minimist(process.argv.slice(2), {
+        boolean: ['debug']
+    });
+    
     var args = {
-        bower: false,
-        plumber: true,
-        uglify: false
+        debug: options.debug,
+        dev: true,
+        watch: true
     };
 
-    var gulp = require('gulp');
-
     var build = require('./lib/build');
-    var watch = require('./lib/watch');
 
-    return gulp.series(
-        build(args),
-        watch(args)
-    )(done);
+    return build(args)(done);
 
 };

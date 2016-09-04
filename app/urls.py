@@ -1,7 +1,8 @@
 import re
 
 from django.conf import settings
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
+from tastypie.api import Api
 
 from urls_app import urlpatterns as app_urlpatterns
 
@@ -16,6 +17,13 @@ urlpatterns = patterns(
     '',
     url(r'^/?$', HomeView.as_view(), name='home'),
 )
+
+#
+#  API routes.
+#
+
+api = Api(api_name=u"v1")
+urlpatterns += patterns('', (r'^api/', include(api.urls)))
 
 #
 # Assets.
