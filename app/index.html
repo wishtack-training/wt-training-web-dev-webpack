@@ -8,7 +8,13 @@
 
 <body>
 
-    <wt-user-list></wt-user-list>
+    <form onsubmit="userListController.addUser({event: event})">
+        <input type="text" name="firstName">
+        <input type="text" name="lastName">
+        <button type="submit">ADD</button>
+    </form>
+
+    <div id="wt-user-list"></div>
 
 </body>
 

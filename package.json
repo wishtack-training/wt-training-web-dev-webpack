@@ -1,6 +1,6 @@
 {
     "name": "wt-training-web-dev-webpack",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "dependencies": {
         "@angular/core": "2.0.0-rc.5",
         "angular": "1.5.5",
