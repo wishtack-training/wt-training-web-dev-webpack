@@ -14,9 +14,12 @@ export class UserListController {
 
         this._userStore = new UserStore();
 
-        this._userListElementId = '#wt-user-list';
+        this._userListElementSelector = '#wt-user-list';
 
-        this._userStore.userList().forEach((user) => this._injectUser({user: user}));
+        this._userStore.userList()
+            .then((userList) => {
+                userList.forEach(user => this._injectUser({user: user}));
+            });
 
     }
 
@@ -39,8 +42,8 @@ export class UserListController {
 
         user = new User(userData);
 
-        this._userStore.addUser({user: user});
-        this._injectUser({user: user});
+        this._userStore.addUser({user: user})
+            .then(user => this._injectUser({user: user}));
 
     }
 
@@ -50,7 +53,7 @@ export class UserListController {
         user.element = this._createUserElement({user: user});
 
         /* Display user. */
-        document.querySelector(this._userListElementId).appendChild(user.element);
+        document.querySelector(this._userListElementSelector).appendChild(user.element);
 
     }
 
@@ -71,9 +74,8 @@ export class UserListController {
 
     _removeUser({user}) {
 
-        this._userStore.removeUser({user: user});
-
-        user.element.remove();
+        this._userStore.removeUser({user: user})
+            .then(() => user.element.remove());
 
     }
 

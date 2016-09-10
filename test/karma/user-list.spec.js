@@ -9,6 +9,8 @@ import {UserListController} from '../../app/frontend/user-list';
 import {UserStore} from '../../app/frontend/user/user-store';
 import {User} from '../../app/frontend/user/user';
 
+import {fakeAsync, tick} from '@angular/core/testing/fake_async';
+
 
 describe('AppUserList', () => {
 
@@ -50,12 +52,14 @@ describe('AppUserList', () => {
 
     });
 
-    it('should add users', () => {
+    it('should add users', fakeAsync(() => {
 
         let userNameElementList;
 
         /* Mocking. */
-        UserStore.prototype.addUser = jasmine.createSpy('addUser');
+        UserStore.prototype.userList = jasmine.createSpy('addUser').and.returnValue(Promise.resolve([]));
+        UserStore.prototype.addUser = jasmine.createSpy('addUser')
+            .and.callFake(({user}) => Promise.resolve(user));
 
         /* Populating DOM. */
         testElement.innerHTML = `
@@ -79,6 +83,8 @@ describe('AppUserList', () => {
         testElement.querySelector('input[name="lastName"]').value = 'BAR';
         testElement.querySelector('button').click();
 
+        tick();
+
         /* Checking results. */
         userNameElementList = testElement.querySelectorAll('#wt-user-list div>span');
         expect(userNameElementList.length).toEqual(2);
@@ -92,9 +98,9 @@ describe('AppUserList', () => {
         expect(UserStore.prototype.addUser.calls.argsFor(1)[0].user.firstName()).toEqual('John');
         expect(UserStore.prototype.addUser.calls.argsFor(1)[0].user.lastName()).toEqual('BAR');
 
-    });
+    }));
 
-    it('should remove users', () => {
+    it('should remove users', fakeAsync(() => {
 
         let userNameElementList;
         let userList = [
@@ -109,8 +115,8 @@ describe('AppUserList', () => {
         ];
 
         /* Mocking. */
-        UserStore.prototype.removeUser = jasmine.createSpy('removeUser');
-        UserStore.prototype.userList = jasmine.createSpy('userList').and.returnValue(userList);
+        UserStore.prototype.removeUser = jasmine.createSpy('removeUser').and.returnValue(Promise.resolve());
+        UserStore.prototype.userList = jasmine.createSpy('userList').and.returnValue(Promise.resolve(userList));
 
         /* Populating DOM. */
         testElement.innerHTML = `<div id="wt-user-list"></div>`;
@@ -118,10 +124,15 @@ describe('AppUserList', () => {
         /* Playing with controller. */
         window.userListController = new UserListController();
 
+        tick();
+
+        /* Run async stuff in a fake async zone. */
         userNameElementList = testElement.querySelectorAll('#wt-user-list div>span');
         expect(userNameElementList.length).toEqual(2);
 
         testElement.querySelectorAll('#wt-user-list button')[1].click();
+
+        tick();
 
         /* Checking results. */
         userNameElementList = testElement.querySelectorAll('#wt-user-list div>span');
@@ -132,6 +143,6 @@ describe('AppUserList', () => {
         expect(UserStore.prototype.removeUser.calls.count()).toEqual(1);
         expect(UserStore.prototype.removeUser.calls.argsFor(0)[0].user).toEqual(userList[1]);
 
-    });
+    }));
 
 });

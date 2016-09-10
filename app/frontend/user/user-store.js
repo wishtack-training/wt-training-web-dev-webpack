@@ -13,14 +13,16 @@ export class UserStore {
 
     addUser({user}) {
         this._userList.push(user);
+        return Promise.resolve(user);
     }
 
     removeUser({user}) {
         this._userList = this._userList.filter((value) => value !== user);
+        return Promise.resolve();
     }
 
     userList() {
-        return this._userList;
+        return Promise.resolve(this._userList);
     }
 
 }
