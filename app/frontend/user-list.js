@@ -7,12 +7,13 @@
 
 import {UserStore} from './user/user-store';
 import {User} from './user/user';
+import {RemoteUserStore} from './user/remote-user-store';
 
 export class UserListController {
 
     constructor() {
 
-        this._userStore = new UserStore();
+        this._userStore = new RemoteUserStore();
 
         this._userListElementSelector = '#wt-user-list';
 

@@ -6,7 +6,7 @@
  */
 
 import {UserListController} from '../../app/frontend/user-list';
-import {UserStore} from '../../app/frontend/user/user-store';
+import {RemoteUserStore} from '../../app/frontend/user/remote-user-store';
 import {User} from '../../app/frontend/user/user';
 
 import {fakeAsync, tick} from '@angular/core/testing/fake_async';
@@ -40,13 +40,13 @@ describe('AppUserList', () => {
         /* Backing up mocked methods. */
         userStorePrototype = {};
         ['addUser', 'removeUser', 'userList']
-            .forEach(methodName => userStorePrototype[methodName] = UserStore.prototype[methodName]);
+            .forEach(methodName => userStorePrototype[methodName] = RemoteUserStore.prototype[methodName]);
 
     });
 
     afterEach(() => {
 
-        Object.assign(UserStore.prototype, userStorePrototype);
+        Object.assign(RemoteUserStore.prototype, userStorePrototype);
 
         _reset();
 
@@ -57,8 +57,8 @@ describe('AppUserList', () => {
         let userNameElementList;
 
         /* Mocking. */
-        UserStore.prototype.userList = jasmine.createSpy('addUser').and.returnValue(Promise.resolve([]));
-        UserStore.prototype.addUser = jasmine.createSpy('addUser')
+        RemoteUserStore.prototype.userList = jasmine.createSpy('addUser').and.returnValue(Promise.resolve([]));
+        RemoteUserStore.prototype.addUser = jasmine.createSpy('addUser')
             .and.callFake(({user}) => Promise.resolve(user));
 
         /* Populating DOM. */
@@ -92,11 +92,11 @@ describe('AppUserList', () => {
         expect(userNameElementList[1].innerText.trim()).toEqual('John BAR');
 
         /* Checking mocks.*/
-        expect(UserStore.prototype.addUser.calls.count()).toEqual(2);
-        expect(UserStore.prototype.addUser.calls.argsFor(0)[0].user.firstName()).toEqual('Foo');
-        expect(UserStore.prototype.addUser.calls.argsFor(0)[0].user.lastName()).toEqual('BAR');
-        expect(UserStore.prototype.addUser.calls.argsFor(1)[0].user.firstName()).toEqual('John');
-        expect(UserStore.prototype.addUser.calls.argsFor(1)[0].user.lastName()).toEqual('BAR');
+        expect(RemoteUserStore.prototype.addUser.calls.count()).toEqual(2);
+        expect(RemoteUserStore.prototype.addUser.calls.argsFor(0)[0].user.firstName()).toEqual('Foo');
+        expect(RemoteUserStore.prototype.addUser.calls.argsFor(0)[0].user.lastName()).toEqual('BAR');
+        expect(RemoteUserStore.prototype.addUser.calls.argsFor(1)[0].user.firstName()).toEqual('John');
+        expect(RemoteUserStore.prototype.addUser.calls.argsFor(1)[0].user.lastName()).toEqual('BAR');
 
     }));
 
@@ -115,8 +115,8 @@ describe('AppUserList', () => {
         ];
 
         /* Mocking. */
-        UserStore.prototype.removeUser = jasmine.createSpy('removeUser').and.returnValue(Promise.resolve());
-        UserStore.prototype.userList = jasmine.createSpy('userList').and.returnValue(Promise.resolve(userList));
+        RemoteUserStore.prototype.removeUser = jasmine.createSpy('removeUser').and.returnValue(Promise.resolve());
+        RemoteUserStore.prototype.userList = jasmine.createSpy('userList').and.returnValue(Promise.resolve(userList));
 
         /* Populating DOM. */
         testElement.innerHTML = `<div id="wt-user-list"></div>`;
@@ -140,8 +140,8 @@ describe('AppUserList', () => {
         expect(userNameElementList[0].innerText.trim()).toEqual('Foo BAR');
 
         /* Checking mocks. */
-        expect(UserStore.prototype.removeUser.calls.count()).toEqual(1);
-        expect(UserStore.prototype.removeUser.calls.argsFor(0)[0].user).toEqual(userList[1]);
+        expect(RemoteUserStore.prototype.removeUser.calls.count()).toEqual(1);
+        expect(RemoteUserStore.prototype.removeUser.calls.argsFor(0)[0].user).toEqual(userList[1]);
 
     }));
 

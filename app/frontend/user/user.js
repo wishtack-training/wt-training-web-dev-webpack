@@ -7,9 +7,14 @@
 
 export class User {
 
-    constructor({firstName, lastName}) {
+    constructor({id=null, firstName, lastName}) {
+        this._id = id;
         this._firstName = firstName;
         this._lastName = lastName;
+    }
+
+    id() {
+        return this._id;
     }
 
     firstName() {
@@ -18,6 +23,14 @@ export class User {
 
     lastName() {
         return this._lastName;
+    }
+
+    json() {
+        return JSON.stringify({
+            id: this.id(),
+            firstName: this.firstName(),
+            lastName: this.lastName()
+        });
     }
 
 }
