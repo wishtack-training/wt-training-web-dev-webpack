@@ -1,3 +1,5 @@
+@import '../../node_modules/bourbon/app/assets/stylesheets/_bourbon.scss';
+
 $wt-md-min-width: 600px;
 $wt-transition-duration: .5s;
 
@@ -6,13 +8,13 @@ $wt-transition-duration: .5s;
   form {
 
     /* Flexbox. */
-    display: flex;
-    justify-content: space-around;
+    @include display(flex);
+    @include justify-content(space-around);
 
-    flex-direction: column;
+    @include flex-direction(column);
 
     @media (min-width: $wt-md-min-width) {
-      flex-direction: row;
+      @include flex-direction(row);
     }
 
   }
@@ -42,19 +44,19 @@ $wt-transition-duration: .5s;
     }
 
     /* Flexbox. */
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(space-around);
 
     /* Adding transition to:
      * 'background-color' property in order to change colors smoothly when an item is removed.
      * 'height' property as we set it to 0px when the item is removed. */
-    transition-duration: $wt-transition-duration;
-    transition-property: background-color, height;
-    transition-timing-function: ease-out;
+    @include transition-duration($wt-transition-duration);
+    @include transition-property(background-color, height);
+    @include transition-timing-function(ease-out);
 
     .wt-user-name {
-      flex: 1;
+      @include flex(1);
     }
 
     .wt-user-firstname {
@@ -66,9 +68,9 @@ $wt-transition-duration: .5s;
     }
 
     button {
-      transition-duration: $wt-transition-duration;
-      transition-property: opacity;
-      transition-timing-function: ease-out;
+      @include transition-duration($wt-transition-duration);
+      @include transition-property(opacity);
+      @include transition-timing-function(ease-out);
     }
 
   }
