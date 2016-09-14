@@ -1,0 +1,88 @@
+$wt-md-min-width: 600px;
+$wt-transition-duration: .5s;
+
+.wt-app {
+
+  form {
+
+    /* Flexbox. */
+    display: flex;
+    justify-content: space-around;
+
+    flex-direction: column;
+
+    @media (min-width: $wt-md-min-width) {
+      flex-direction: row;
+    }
+
+  }
+
+  button, input {
+
+    height: 30px;
+
+    @media (min-width: $wt-md-min-width) {
+        height: auto;
+    }
+
+  }
+
+}
+
+.wt-user-list {
+
+  padding: 0px;
+
+  li {
+
+    height: 40px;
+
+    @media(min-width: $wt-md-min-width) {
+      height: 20px;
+    }
+
+    /* Flexbox. */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    /* Adding transition to:
+     * 'background-color' property in order to change colors smoothly when an item is removed.
+     * 'height' property as we set it to 0px when the item is removed. */
+    transition-duration: $wt-transition-duration;
+    transition-property: background-color, height;
+    transition-timing-function: ease-out;
+
+    .wt-user-name {
+      flex: 1;
+    }
+
+    .wt-user-firstname {
+      text-transform: capitalize;
+    }
+
+    .wt-user-lastname {
+      text-transform: uppercase;
+    }
+
+    button {
+      transition-duration: $wt-transition-duration;
+      transition-property: opacity;
+      transition-timing-function: ease-out;
+    }
+
+  }
+
+  li:nth-child(odd) {
+    background-color: wheat;
+  }
+
+  li:not(:hover) button {
+
+    @media(min-width: $wt-md-min-width) {
+      opacity: 0;
+    }
+
+  }
+
+}

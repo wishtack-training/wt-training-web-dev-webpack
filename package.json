@@ -8,6 +8,7 @@
         "angular-aria": "1.5.5",
         "angular-material": "1.0.7",
         "angular-mocks": "1.5.5",
+        "animate.css": "3.5.2",
         "awesome-typescript-loader": "0.17.0",
         "babel-core": "6.7.7",
         "babel-loader": "6.2.4",

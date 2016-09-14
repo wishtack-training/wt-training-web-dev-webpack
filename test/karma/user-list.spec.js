@@ -86,7 +86,7 @@ describe('AppUserList', () => {
         tick();
 
         /* Checking results. */
-        userNameElementList = testElement.querySelectorAll('#wt-user-list div>span');
+        userNameElementList = testElement.querySelectorAll('#wt-user-list li>span');
         expect(userNameElementList.length).toEqual(2);
         expect(userNameElementList[0].innerText.trim()).toEqual('Foo BAR');
         expect(userNameElementList[1].innerText.trim()).toEqual('John BAR');
@@ -127,7 +127,7 @@ describe('AppUserList', () => {
         tick();
 
         /* Run async stuff in a fake async zone. */
-        userNameElementList = testElement.querySelectorAll('#wt-user-list div>span');
+        userNameElementList = testElement.querySelectorAll('#wt-user-list li>span');
         expect(userNameElementList.length).toEqual(2);
 
         testElement.querySelectorAll('#wt-user-list button')[1].click();
@@ -135,7 +135,7 @@ describe('AppUserList', () => {
         tick();
 
         /* Checking results. */
-        userNameElementList = testElement.querySelectorAll('#wt-user-list div>span');
+        userNameElementList = testElement.querySelectorAll('#wt-user-list li>span');
         expect(userNameElementList.length).toEqual(1);
         expect(userNameElementList[0].innerText.trim()).toEqual('Foo BAR');
 

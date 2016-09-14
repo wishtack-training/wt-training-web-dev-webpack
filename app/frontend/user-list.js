@@ -5,7 +5,8 @@
  * $Id: $
  */
 
-import {UserStore} from './user/user-store';
+import 'style!../../node_modules/animate.css/animate.min.css';
+import 'style!../frontend/user-list.scss';
 import {User} from './user/user';
 import {RemoteUserStore} from './user/remote-user-store';
 
@@ -59,16 +60,17 @@ export class UserListController {
     }
 
     _createUserElement({user}) {
-        let element = document.createElement('div');
+        let element = document.createElement('li');
         element.innerHTML = `
-<span>
-    <span class="wt-first-name"></span>
-    <span class="wt-last-name"></span>
+<span class="wt-user-name">
+    <span class="wt-user-first-name"></span>
+    <span class="wt-user-last-name"></span>
 </span>
 <button type="button">REMOVE</button>
 `;
-        element.querySelector('.wt-first-name').innerText = user.firstName();
-        element.querySelector('.wt-last-name').innerText = user.lastName();
+        element.classList.add('animated', 'bounceInLeft');
+        element.querySelector('.wt-user-first-name').innerText = user.firstName();
+        element.querySelector('.wt-user-last-name').innerText = user.lastName();
         element.querySelector('button').addEventListener('click', () => this._removeUser({user: user}));
         return element;
     }

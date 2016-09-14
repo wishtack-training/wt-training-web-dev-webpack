@@ -2,19 +2,27 @@
 
 <head>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="//localhost:8729/livereload.js"></script>
 
 </head>
 
 <body>
 
-    <form onsubmit="userListController.addUser({event: event})">
-        <input type="text" name="firstName">
-        <input type="text" name="lastName">
-        <button type="submit">ADD</button>
-    </form>
+    <div class="wt-app">
 
-    <div id="wt-user-list"></div>
+        <form onsubmit="userListController.addUser({event: event})">
+            <input type="text" name="firstName">
+            <input type="text" name="lastName">
+            <button type="submit">ADD</button>
+        </form>
+
+        <ul
+                class="wt-user-list"
+                id="wt-user-list"></ul>
+
+    </div>
 
 </body>
 
