@@ -7,35 +7,8 @@
 
 'use strict';
 
-class User {
-
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-}
-
-class UserStore {
-
-    constructor() {
-        this._userList = [];
-    }
-
-    getUserList() {
-        return this._userList;
-    }
-
-    addUser(user) {
-        this._userList = [...this._userList, user];
-    }
-
-    removeUser(user) {
-        this._userList = this._userList
-            .filter((_user) => _user !== user);
-    }
-
-}
+import { UserStore } from './user-store';
+import { User } from './user';
 
 const userStore = new UserStore();
 

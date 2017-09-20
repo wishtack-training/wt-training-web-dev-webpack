@@ -1,0 +1,13 @@
+{
+  "name": "wt-training-web-dev-webpack",
+  "version": "0.0.0",
+  "repository": "git@github.com:wishtack-training/wt-training-web-dev-webpack.git",
+  "author": "Younes JAAIDI <yjaaidi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack src/main.js dist/app.js"
+  },
+  "dependencies": {
+    "webpack": "3.6.0"
+  }
+}
