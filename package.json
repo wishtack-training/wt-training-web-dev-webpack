@@ -5,9 +5,12 @@
   "author": "Younes JAAIDI <yjaaidi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack src/main.js dist/app.js"
+    "build": "webpack",
+    "watch": "yarn build --watch"
   },
   "dependencies": {
-    "webpack": "3.6.0"
+    "html-webpack-plugin": "2.30.1",
+    "webpack": "3.6.0",
+    "webpack-livereload-plugin": "0.11.0"
   }
 }
