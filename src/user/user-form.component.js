@@ -41,10 +41,10 @@ export class UserFormComponent {
 
             event.preventDefault();
 
-            const user = new User(
-                form.querySelector('input[name="firstName"]').value,
-                form.querySelector('input[name="lastName"]').value
-            );
+            const firstName = form.querySelector('input[name="firstName"]').value;
+            const lastName = form.querySelector('input[name="lastName"]').value;
+
+            const user = new User({firstName, lastName});
 
             this._userStore.addUser(user);
 

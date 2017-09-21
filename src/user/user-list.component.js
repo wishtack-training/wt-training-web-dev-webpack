@@ -39,7 +39,7 @@ export class UserListComponent {
 
                 userElement.querySelector('button')
                     .addEventListener('click', () => {
-                        this._userStore.removeUser(user);
+                        this._userStore.removeUser(user.id);
                     });
 
                 this._element.querySelector('ul')

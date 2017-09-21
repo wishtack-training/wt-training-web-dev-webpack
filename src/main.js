@@ -8,6 +8,24 @@
 
 'use strict';
 
+
+const getUser = async () => {
+
+    const response = await fetch('http://wt-users.getsandbox.com/users');
+
+    const userList = await response.json();
+
+    const userId = userList[0].id;
+
+    const userResponse = await fetch(`http://wt-users.getsandbox.com/users/${userId}`);
+
+    const user = await userResponse.json();
+
+    return user;
+
+};
+
+
 import {UserStore} from './user/user-store';
 import {UserFormComponent} from './user/user-form.component';
 import {UserListComponent} from './user/user-list.component';
@@ -23,6 +41,8 @@ const renderComponent = ({selector, factory}) => {
 };
 
 const userStore = new UserStore();
+
+userStore.retrieveUserList();
 
 renderComponent({
     selector: 'wt-user-form',
