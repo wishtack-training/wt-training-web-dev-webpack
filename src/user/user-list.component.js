@@ -30,6 +30,8 @@ export class UserListComponent {
 
                 const userElement = document.createElement('li');
 
+                userElement.classList.add(['wt-user']);
+
                 userElement.innerHTML = `
 <span></span>
 <button type="button">REMOVE</button>
@@ -39,6 +41,9 @@ export class UserListComponent {
 
                 userElement.querySelector('button')
                     .addEventListener('click', () => {
+                        userElement.classList.add([
+                            'wt-user--removed'
+                        ]);
                         this._userStore.removeUser(user.id);
                     });
 

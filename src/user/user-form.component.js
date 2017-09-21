@@ -30,7 +30,9 @@ export class UserFormComponent {
         name="lastName"
         type="text">
            
-   <button type="submit">ADD</button>
+   <button
+        class="wt-btn wt-user-add-form__submit-btn"
+        type="submit">ADD</button>
     
 </form>
         `;

@@ -1,0 +1,24 @@
+.wt-btn {
+    font-size: 12px;
+}
+
+
+.wt-user-add-form__submit-btn {
+    border-radius: 5px;
+}
+
+.wt-user {
+    background-color: white;
+    height: 20px;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.wt-user--removed {
+    height: 0px;
+    transform: scaleY(0);
+}
+
+.wt-user:nth-child(even) {
+    background-color: aquamarine;
+}
