@@ -16,4 +16,28 @@ class Customer {
 
 const customer = new Customer('Foo DOE');
 
-document.querySelector('body').textContent = customer.name;
+export class AppComponent extends HTMLElement {
+
+    static observedAttributes = [
+        'user-id'
+    ];
+
+    constructor() {
+
+        super();
+
+        this.innerHTML = `
+<div>
+    <span class="name"></span>
+</div>`;
+
+    }
+
+    attributeChangedCallback(attributeName, previousValue, currentValue) {
+        this.querySelector('.name').textContent = `${customer.name} (${currentValue})`;
+    }
+
+
+}
+
+customElements.define('wt-app', AppComponent);
