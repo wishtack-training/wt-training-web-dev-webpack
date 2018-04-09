@@ -1,0 +1,23 @@
+{
+  "name": "wt-training-web-dev-webpack",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:wishtack-training/wt-training-web-dev-webpack.git",
+  "author": "Younes JAAIDI <yjaaidi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "build:prod": "webpack --mode=production",
+    "start": "webpack-dev-server --open"
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.4",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack-livereload-plugin": "^2.1.1"
+  }
+}
