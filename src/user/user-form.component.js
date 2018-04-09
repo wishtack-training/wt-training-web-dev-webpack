@@ -27,6 +27,7 @@ export class UserFormComponent {
         type="text">
 
     <input
+        class="wt-input--optional"
         name="lastName"
         type="text">
            

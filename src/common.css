@@ -3,9 +3,6 @@
 }
 
 
-.wt-user-add-form__submit-btn {
-    border-radius: 5px;
-}
 
 .wt-user {
     background-color: white;
@@ -21,4 +18,61 @@
 
 .wt-user:nth-child(even) {
     background-color: aquamarine;
+}
+
+@media (max-width: 599px) {
+
+    .wt-input--optional {
+        display: none;
+    }
+
+}
+
+@media (orientation: portrait) {
+
+    form {
+        display: none;
+    }
+
+}
+
+@media (orientation: landscape) {
+
+    ul {
+        display: none;
+    }
+
+}
+
+body {
+    min-height: 100%;
+}
+
+.wt-box {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 100%;
+
+}
+
+.wt-box > div {
+    flex: 1;
+    min-width: 200px;
+    transition: all .3s;
+}
+
+.wt-box > div:hover {
+    flex: 2;
+}
+
+
+@media (orientation: landscape) {
+
+    .wt-box {
+        flex-direction: row;
+    }
+
 }
