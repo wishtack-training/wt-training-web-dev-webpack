@@ -13,9 +13,6 @@ function main() {
         console.log(value);
     }, 0);
 
-    while (value === null) {
-        console.log('waiting');
-    }
     console.log(value);
 
 }
