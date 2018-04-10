@@ -1,12 +1,15 @@
 class Citizen {
 
+    firstName;
+    lastName;
+
     constructor(firstName = null, lastName = null) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     sayHi() {
-        console.log(this.firstName + ' ' + this.lastName);
+        console.log(`Hello ${this.firstName} ${this.lastName}.`);
     }
 
     sayHiLater() {
