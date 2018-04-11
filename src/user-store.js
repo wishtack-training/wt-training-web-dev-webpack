@@ -12,7 +12,7 @@
 class UserStore {
 
     constructor() {
-        this._history = [];
+        this._listenerList = [];
         this._userList = [];
     }
 
@@ -24,6 +24,10 @@ class UserStore {
         this._updateUserList([...this._userList, user]);
     }
 
+    onChange(listener) {
+        this._listenerList.push(listener);
+    }
+
     removeUser(user) {
         const userList = this._userList
             .filter(_user => user !== _user);
@@ -31,7 +35,13 @@ class UserStore {
     }
 
     _updateUserList(userList) {
+
         this._userList = userList;
+
+        this._listenerList.forEach(listener => {
+            listener(userList);
+        });
+
     }
 
 }
