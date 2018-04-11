@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+.wt-picture {
+
+    background-color: azure;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+
+}

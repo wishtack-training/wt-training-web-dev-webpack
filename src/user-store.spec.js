@@ -20,42 +20,6 @@ const assertEquals = (expected, value) => {
 
 };
 
-class UserStore {
-
-    constructor() {
-        this._history = [];
-        this._userList = [];
-    }
-
-    getUserList() {
-        return this._userList;
-    }
-
-    addUser(user) {
-        this._updateUserList([...this._userList, user]);
-    }
-
-    removeUser(user) {
-        const userList = this._userList
-            .filter(_user => user !== _user);
-        this._updateUserList(userList);
-    }
-
-    _updateUserList(userList) {
-        this._userList = userList;
-    }
-
-}
-
-class User {
-
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-}
-
 const testAddUser = () => {
 
     const userStore = new UserStore();
