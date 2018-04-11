@@ -45,3 +45,7 @@ class UserStore {
     }
 
 }
+
+// @HACK: THIS IS UGLY!!! 🤮
+// Cf. Webpack.
+const userStore = new UserStore();

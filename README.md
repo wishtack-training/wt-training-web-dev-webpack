@@ -38,3 +38,6 @@ https://frontendmasters.com/books/front-end-handbook/2017/tools/diagram.html
 
 ## Airbnb style guide
 http://airbnb.io/javascript/
+
+## Custom elements
+https://developers.google.com/web/fundamentals/web-components/customelements
