@@ -20,10 +20,10 @@ const assertEquals = (expected, value) => {
 
 };
 
-
 class UserStore {
 
     constructor() {
+        this._history = [];
         this._userList = [];
     }
 
@@ -32,16 +32,17 @@ class UserStore {
     }
 
     addUser(user) {
-        this._userList.push(user);
+        this._updateUserList([...this._userList, user]);
     }
 
     removeUser(user) {
+        const userList = this._userList
+            .filter(_user => user !== _user);
+        this._updateUserList(userList);
+    }
 
-        const userIndex = this._userList
-            .indexOf(user);
-
-        this._userList.splice(userIndex, 1);
-
+    _updateUserList(userList) {
+        this._userList = userList;
     }
 
 }
@@ -65,13 +66,13 @@ const testAddUser = () => {
 
     const userListEmpty = userStore.getUserList();
 
-    assertEquals(0, userListEmpty.length);
-
     userStore.addUser(user1);
     userStore.addUser(user2);
     userStore.addUser(user3);
 
     const userList = userStore.getUserList();
+
+    assertEquals(0, userListEmpty.length);
 
     assertEquals(3, userList.length);
     assertEquals(user1, userList[0]);
@@ -92,9 +93,13 @@ const testRemoveUser = () => {
     userStore.addUser(user2);
     userStore.addUser(user3);
 
+    const userListFull = userStore.getUserList();
+
     userStore.removeUser(user1);
 
     const userList = userStore.getUserList();
+
+    assertEquals(3, userListFull.length);
 
     assertEquals(2, userList.length);
     assertEquals(user2, userList[0]);
@@ -102,5 +107,17 @@ const testRemoveUser = () => {
 
 };
 
+const testGetUserList = () => {
+
+    const userStore = new UserStore();
+
+    const userList1 = userStore.getUserList();
+    const userList2 = userStore.getUserList();
+
+    assertEquals(userList1, userList2);
+
+};
+
 testAddUser();
 testRemoveUser();
+testGetUserList();
