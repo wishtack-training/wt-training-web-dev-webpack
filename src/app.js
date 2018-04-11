@@ -79,12 +79,23 @@ class UserListComponent {
             <div>
                 <span class="wt-user-name"></span>
             </div>
+            <div>
+                <button
+                    class="wt-remove-button"
+                    type="button">REMOVE</button>
+            </div>
             `;
 
             userElement.querySelector('img').src = `https://robohash.org/${encodeURIComponent(user.firstName)}?set=set4`;
 
             userElement.querySelector('.wt-user-name')
                 .textContent = `${user.firstName} ${user.lastName}`;
+
+            const buttonElement = userElement.querySelector('.wt-remove-button');
+
+            buttonElement.addEventListener('click', () => {
+                this._userStore.removeUser(user);
+            });
 
             return userElement;
 
@@ -100,15 +111,18 @@ class UserListComponent {
 
 const userStore = new UserStore();
 
-const userFormComponent = new UserFormComponent(
-    document.querySelector('.wt-user-form'),
-    userStore
-);
+document.querySelectorAll('wt-user-form')
+    .forEach(containerElement => {
+        new UserFormComponent(
+            containerElement,
+            userStore
+        )
+            .render();
+    });
 
-userFormComponent.render();
 
 const userListComponent = new UserListComponent(
-    document.querySelector('.wt-user-list'),
+    document.querySelector('wt-user-list'),
     userStore
 );
 
