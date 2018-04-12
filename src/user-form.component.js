@@ -37,7 +37,7 @@ class UserFormComponent extends HTMLElement {
             const lastName = formElement
                 .querySelector('input[name="lastName"]').value;
 
-            const user = new User(firstName, lastName);
+            const user = new User({firstName, lastName});
 
             this._userStore.addUser(user);
 

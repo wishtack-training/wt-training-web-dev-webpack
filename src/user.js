@@ -9,7 +9,8 @@
 
 class User {
 
-    constructor(firstName, lastName) {
+    constructor({firstName, lastName = null}) {
+
         this.firstName = firstName;
         this.lastName = lastName;
     }
