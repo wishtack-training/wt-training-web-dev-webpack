@@ -45,15 +45,10 @@ class UserListComponent extends HTMLElement {
 
         const userElementList = this._userList.map(user => {
 
-            const userElement = document.createElement('div');
+            const userContainerElement = document.createElement('div');
 
-            userElement.innerHTML = `
-            <div>
-                <img class="wt-picture" src="" alt="">
-            </div>
-            <div>
-                <span class="wt-user-name"></span>
-            </div>
+            userContainerElement.innerHTML = `
+            <wt-user></wt-user>
             <div>
                 <button
                     class="wt-remove-button"
@@ -61,18 +56,18 @@ class UserListComponent extends HTMLElement {
             </div>
             `;
 
-            userElement.querySelector('img').src = `https://robohash.org/${encodeURIComponent(user.firstName)}?set=set4`;
+            const userElement = userContainerElement
+                .querySelector('wt-user');
 
-            userElement.querySelector('.wt-user-name')
-                .textContent = `${user.firstName} ${user.lastName}`;
+            userElement.user = user;
 
-            const buttonElement = userElement.querySelector('.wt-remove-button');
+            const buttonElement = userContainerElement.querySelector('.wt-remove-button');
 
             buttonElement.addEventListener('click', () => {
                 this._userStore.removeUser(user);
             });
 
-            return userElement;
+            return userContainerElement;
 
         });
 
