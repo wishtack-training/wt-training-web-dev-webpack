@@ -1,2 +1,4 @@
 .idea
 .floo*
+/dist
+/node_modules

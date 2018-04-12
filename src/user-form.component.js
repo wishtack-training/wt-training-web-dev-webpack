@@ -5,10 +5,13 @@
  * $Id: $
  */
 
+
 'use strict';
 
+import { userStore } from './user-store';
+import { User } from './user';
 
-class UserFormComponent extends HTMLElement {
+export class UserFormComponent extends HTMLElement {
 
     constructor() {
         super();

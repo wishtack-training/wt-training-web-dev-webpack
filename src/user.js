@@ -7,7 +7,7 @@
 
 'use strict';
 
-class User {
+export class User {
 
     constructor({firstName, lastName = null}) {
 

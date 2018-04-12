@@ -5,7 +5,10 @@
  * $Id: $
  */
 
+
 'use strict';
+
+import { userStore } from './user-store';
 
 class UserListComponent extends HTMLElement {
 

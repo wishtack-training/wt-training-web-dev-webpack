@@ -7,14 +7,10 @@
 
 'use strict';
 
+export class UserStore {
 
-
-class UserStore {
-
-    constructor() {
-        this._listenerList = [];
-        this._userList = [];
-    }
+    private _listenerList = [];
+    private _userList = [];
 
     getUserList() {
         return this._userList;
@@ -48,4 +44,4 @@ class UserStore {
 
 // @HACK: THIS IS UGLY!!! 🤮
 // Cf. Webpack.
-const userStore = new UserStore();
+export const userStore = new UserStore();
