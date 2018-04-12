@@ -8,6 +8,6 @@
 'use strict';
 
 import './app.css';
-import './user.component';
-import './user-form.component';
-import './user-list.component';
+import './user/user.component';
+import './user/user-form.component';
+import './user/user-list.component';

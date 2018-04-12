@@ -8,9 +8,14 @@
 
 'use strict';
 
-import { userStore } from './user-store';
+import { UserStore, userStore } from '../user-store';
+import { User } from './user';
+import { UserComponent } from './user.component';
 
 class UserListComponent extends HTMLElement {
+
+    private _userStore: UserStore;
+    private _userList: User[];
 
     static get observedAttributes() {
         return [
@@ -59,7 +64,7 @@ class UserListComponent extends HTMLElement {
             </div>
             `;
 
-            const userElement = userContainerElement
+            const userElement: UserComponent = userContainerElement
                 .querySelector('wt-user');
 
             userElement.user = user;

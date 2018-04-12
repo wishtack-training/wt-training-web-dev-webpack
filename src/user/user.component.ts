@@ -5,16 +5,21 @@
  * $Id: $
  */
 
+
 'use strict';
 
-class UserComponent extends HTMLElement {
+import { User } from './user';
+
+export class UserComponent extends HTMLElement {
+
+    private _user: User;
 
     constructor() {
         super();
         this._user = null;
     }
 
-    set user(user) {
+    set user(user: User) {
         this._user = user;
         this._render();
     }

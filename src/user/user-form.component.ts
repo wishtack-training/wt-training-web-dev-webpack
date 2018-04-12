@@ -8,10 +8,12 @@
 
 'use strict';
 
-import { userStore } from './user-store';
+import { UserStore, userStore } from '../user-store';
 import { User } from './user';
 
 export class UserFormComponent extends HTMLElement {
+
+    private _userStore: UserStore;
 
     constructor() {
         super();
@@ -34,11 +36,15 @@ export class UserFormComponent extends HTMLElement {
 
             event.preventDefault();
 
-            const firstName = formElement
-                .querySelector('input[name="firstName"]').value;
+            const firstNameElement = formElement
+                .querySelector('input[name="firstName"]') as any;
 
-            const lastName = formElement
-                .querySelector('input[name="lastName"]').value;
+            const firstName = firstNameElement.value;
+
+            const lastNameElement = formElement
+                .querySelector('input[name="lastName"]') as any;
+
+            const lastName = lastNameElement.value;
 
             const user = new User({firstName, lastName});
 
