@@ -1,23 +1,24 @@
 # Tools
 
-## Node 9
+## Node 10
 https://nodejs.org/en/
 
 ## Git
 https://git-scm.com/
 
-## IntelliJ EAP
-https://www.jetbrains.com/idea/nextversion/
-
-WARNING: Do not enable "vim" mode.
+## JetBrains Toolbox + WebStorm
+https://www.jetbrains.com/toolbox/app/
 
 # Course material
 
 ## Wishtack courses
+
 https://courses.wishtack.com
 
+https://web-dev-guide.wishtack.io
+
 ## Floobits
-https://floobits.com/wishtack
+https://floobits.com/younes
 
 ## Repo
 https://www.github.com/wishtack-training/wt-training-web-dev-webpack
