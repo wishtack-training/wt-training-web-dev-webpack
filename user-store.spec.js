@@ -7,14 +7,8 @@
 
 'use strict';
 
-class User {
-
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-}
+import {UserStore} from './src/user-store';
+import {User} from './src/user';
 
 const assertEquals = (expectedValue, value) => {
 
@@ -28,26 +22,6 @@ const assertEquals = (expectedValue, value) => {
     }
 
 };
-
-class UserStore {
-
-    constructor() {
-        this._userList = [];
-    }
-
-    getUserList() {
-        return this._userList;
-    }
-
-    addUser(user) {
-        this._userList = [...this._userList, user];
-    }
-
-    removeUser(user) {
-        this._userList = this._userList.filter(_user => _user !== user);
-    }
-
-}
 
 const test = () => {
 
@@ -83,47 +57,3 @@ const test = () => {
 };
 
 test();
-
-const main = () => {
-
-    const userStore = new UserStore();
-
-    userStore.addUser(new User('Foo', 'BAR'));
-    userStore.addUser(new User('John', 'DOE'));
-
-    class UserListComponent extends HTMLElement {
-
-        constructor() {
-            super();
-
-            this.innerText = 'hello world!';
-
-            for (const user of userStore.getUserList()) {
-
-                const userElement = document.createElement('div');
-
-                userElement.innerHTML = `
-<div>
-    <div><img src="" alt=""></div>
-    <div id="wt-user-name"></div>
-</div>
-`;
-
-                userElement.querySelector('img').src = `https://robohash.org/${encodeURIComponent(user.firstName)}`;
-
-                userElement.querySelector('#wt-user-name').textContent = `${user.firstName} ${user.lastName}`;
-
-                this.appendChild(userElement);
-
-            }
-
-        }
-
-    }
-
-    customElements.define('wt-user-list', UserListComponent);
-
-};
-
-document.addEventListener('DOMContentLoaded', () => main());
-
