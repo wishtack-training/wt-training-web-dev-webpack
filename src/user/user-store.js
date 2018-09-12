@@ -10,7 +10,7 @@ export class UserStore {
     }
 
     addUser(user) {
-        this._userList = [...this._userList, user];
+        this._userList = [user, ...this._userList];
         this._notify();
     }
 
