@@ -91,27 +91,39 @@ const main = () => {
     userStore.addUser(new User('Foo', 'BAR'));
     userStore.addUser(new User('John', 'DOE'));
 
-    const userListContainer = document.querySelector('#wt-user-list');
+    class UserListComponent extends HTMLElement {
 
-    for (const user of userStore.getUserList()) {
+        constructor() {
+            super();
 
-        const userElement = document.createElement('div');
+            this.innerText = 'hello world!';
 
-        userElement.innerHTML = `
+            for (const user of userStore.getUserList()) {
+
+                const userElement = document.createElement('div');
+
+                userElement.innerHTML = `
 <div>
     <div><img src="" alt=""></div>
     <div id="wt-user-name"></div>
 </div>
 `;
 
-        userElement.querySelector('img').src = `https://robohash.org/${encodeURIComponent(user.firstName)}`;
+                userElement.querySelector('img').src = `https://robohash.org/${encodeURIComponent(user.firstName)}`;
 
-        userElement.querySelector('#wt-user-name').textContent = `${user.firstName} ${user.lastName}`;
+                userElement.querySelector('#wt-user-name').textContent = `${user.firstName} ${user.lastName}`;
 
-        userListContainer.appendChild(userElement);
+                this.appendChild(userElement);
+
+            }
+
+        }
 
     }
+
+    customElements.define('wt-user-list', UserListComponent);
 
 };
 
 document.addEventListener('DOMContentLoaded', () => main());
+
