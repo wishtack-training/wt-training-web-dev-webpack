@@ -7,8 +7,8 @@
 
 'use strict';
 
-import {UserStore} from './src/user-store';
-import {User} from './src/user';
+import {UserStore} from './user-store';
+import {User} from './user';
 
 const assertEquals = (expectedValue, value) => {
 
