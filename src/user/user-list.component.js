@@ -1,5 +1,7 @@
 import {userStore} from './user-store';
 
+import './user-list.component.scss';
+
 export class UserListComponent extends HTMLElement {
 
     constructor() {

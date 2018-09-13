@@ -1,0 +1,17 @@
+@mixin circle($width) {
+    border-radius: 50%;
+    border-style: solid;
+    width: $width;
+}
+
+wt-user-list {
+
+    img {
+
+        @include circle(100px);
+
+        background-color: purple;
+
+    }
+
+}
