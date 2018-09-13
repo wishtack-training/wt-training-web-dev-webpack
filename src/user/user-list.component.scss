@@ -6,6 +6,15 @@
 
 wt-user-list {
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @media (orientation: landscape) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
     img {
 
         @include circle(100px);
@@ -13,5 +22,6 @@ wt-user-list {
         background-color: purple;
 
     }
+
 
 }

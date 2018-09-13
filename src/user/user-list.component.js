@@ -38,7 +38,7 @@ export class UserListComponent extends HTMLElement {
             const userElement = document.createElement('div');
 
             userElement.innerHTML = `
-<div>
+<div class="wt-user">
     <div><img src="" alt=""></div>
     <div id="wt-user-name"></div>
 </div>
