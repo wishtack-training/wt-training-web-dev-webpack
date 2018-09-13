@@ -1,20 +1,20 @@
+import { User } from './user';
+
 export class UserStore {
 
-    constructor() {
-        this._callbackList = [];
-        this._userList = [];
-    }
+    private _callbackList = [];
+    private _userList: User[] = [];
 
     getUserList() {
         return this._userList;
     }
 
-    addUser(user) {
+    addUser(user: User) {
         this._userList = [user, ...this._userList];
         this._notify();
     }
 
-    removeUser(user) {
+    removeUser(user: User) {
         this._userList = this._userList.filter(_user => _user !== user);
         this._notify();
     }
