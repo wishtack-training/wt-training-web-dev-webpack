@@ -32,18 +32,27 @@
           const queryParamMap = new Map();
           queryParamMap.set('q', criteria.keywords);
           queryParamMap.set('langRestrict', criteria.language);
+          queryParamMap.set('maxResults', 40);
           if (criteria.freeOnly) {
             queryParamMap.set('filter', 'free-ebooks');
           }
 
+          const queryString = createQueryString(queryParamMap);
+
           const response = await fetch(
-            `https://www.googleapis.com/books/v1/volumes?${createQueryString(
-              queryParamMap
-            )}`
+            `https://www.googleapis.com/books/v1/volumes?${queryString}`
           );
           const data = await response.json();
-          console.log(data.totalItems);
-          console.log(data.items[0].volumeInfo.title);
+
+          const bookList = data.items.map(item => {
+            return {
+              id: item.id,
+              title: item.volumeInfo.title,
+              pictureUri: item.volumeInfo.imageLinks.thumbnail
+            };
+          });
+
+          console.log(bookList);
         });
       });
     </script>
