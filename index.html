@@ -14,10 +14,14 @@
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log('submit');
 
-        console.log(form.querySelector('input[name=keywords]').value);
-        
+        const criteria = {
+          keywords: form.querySelector('input[name=keywords]').value,
+          language: form.querySelector('select[name=language]').value,
+          freeOnly: form.querySelector('input[name=freeOnly]').checked
+        };
+
+        console.log(criteria);
 
       });
 
