@@ -7,10 +7,20 @@
     <title>Document</title>
 
     <script>
+      /**
+       * Don't do this at home.
+       * Use a decent library or framework like Axios or Angular HttpClient.
+       */
+      function createQueryString(queryParamMap) {
+        return Array.from(queryParamMap.entries())
+          .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+          .join('&');
+      }
+
       document.addEventListener('DOMContentLoaded', () => {
         const form = document.querySelector('#searchForm');
 
-        form.addEventListener('submit', async (event) => {
+        form.addEventListener('submit', async event => {
           event.preventDefault();
 
           const criteria = {
@@ -19,13 +29,21 @@
             freeOnly: form.querySelector('input[name=freeOnly]').checked
           };
 
-          const q = encodeURIComponent(criteria.keywords);
+          const queryParamMap = new Map();
+          queryParamMap.set('q', criteria.keywords);
+          queryParamMap.set('langRestrict', criteria.language);
+          if (criteria.freeOnly) {
+            queryParamMap.set('filter', 'free-ebooks');
+          }
 
-          const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${q}`)
+          const response = await fetch(
+            `https://www.googleapis.com/books/v1/volumes?${createQueryString(
+              queryParamMap
+            )}`
+          );
           const data = await response.json();
           console.log(data.totalItems);
           console.log(data.items[0].volumeInfo.title);
-
         });
       });
     </script>
