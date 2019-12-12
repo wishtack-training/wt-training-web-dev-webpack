@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
 
-  <script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('#searchForm');
 
-    document.addEventListener('DOMContentLoaded', () => {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
 
-      const form = document.querySelector('#searchForm');
+          const criteria = {
+            keywords: form.querySelector('input[name=keywords]').value,
+            language: form.querySelector('select[name=language]').value,
+            freeOnly: form.querySelector('input[name=freeOnly]').checked
+          };
 
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
+          const q = encodeURIComponent(criteria.keywords);
 
-        const criteria = {
-          keywords: form.querySelector('input[name=keywords]').value,
-          language: form.querySelector('select[name=language]').value,
-          freeOnly: form.querySelector('input[name=freeOnly]').checked
-        };
+          fetch(`https://www.googleapis.com/books/v1/volumes?q=${q}`)
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              console.log(data.totalItems);
+              console.log(data.items[0].volumeInfo.title);
+            });
 
-        console.log(criteria);
-
+        });
       });
+    </script>
+  </head>
+  <body>
+    <form id="searchForm">
+      <fieldset>
+        <legend>Search Criteria</legend>
 
-    });
+        <div>
+          <input
+            name="keywords"
+            placeholder="Book name or author..."
+            type="text"
+          />
+        </div>
 
-  </script>
-  
-</head>
-<body>
-  <form id="searchForm">
-    <fieldset>
-      <legend>Search Criteria</legend>
+        <div>
+          <input name="freeOnly" type="checkbox" /><span>Free Books Only</span>
+        </div>
 
-      <div>
-        <input name="keywords" placeholder="Book name or author..." type="text">
-      </div>
+        <select name="language">
+          <option value="en">🇬🇧 English</option>
+          <option value="fr">🇫🇷 French</option>
+        </select>
+      </fieldset>
 
-      <div>
-        <input name="freeOnly" type="checkbox"><span>Free Books Only</span>
-      </div>
-
-      <select name="language">
-        <option value="en">🇬🇧 English</option>
-        <option value="fr">🇫🇷 French</option>
-      </select>
-
-    </fieldset>
-
-    <button type="submit">SEARCH</button>
-
-  </form>
-</body>
+      <button type="submit">SEARCH</button>
+    </form>
+  </body>
 </html>
