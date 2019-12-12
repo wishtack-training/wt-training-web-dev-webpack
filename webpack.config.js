@@ -33,5 +33,8 @@ module.exports = {
       filename: 'index.html',
       template: path.join(srcPath, 'index.html')
     })
-  ]
+  ],
+  resolve: {
+    extensions: ['.ts', '.mjs', '.js']
+  }
 };

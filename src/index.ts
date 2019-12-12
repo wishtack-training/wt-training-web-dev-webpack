@@ -1,19 +1,3 @@
-/**
- *
- * (c) 2013-2018 Wishtack
- *
- * $Id: $
- */
+import './hello';
 
-'use strict';
-
-class Customer {
-
-    constructor(public name: string) {
-    }
-
-}
-
-const customer = new Customer('Foo DOE');
-
-document.querySelector('body').textContent = customer.name;
+document.body.innerHTML = '<mc-hello></mc-hello>';
