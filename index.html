@@ -5,9 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const form = document.querySelector('#searchForm');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log('submit');
+
+        console.log(form.querySelector('input[name=keywords]').value);
+        
+
+      });
+
+    });
+
+  </script>
+  
 </head>
 <body>
-  <form>
+  <form id="searchForm">
     <fieldset>
       <legend>Search Criteria</legend>
 
@@ -25,6 +45,9 @@
       </select>
 
     </fieldset>
+
+    <button type="submit">SEARCH</button>
+
   </form>
 </body>
 </html>
