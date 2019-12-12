@@ -52,7 +52,20 @@
             };
           });
 
-          console.log(bookList);
+          const bookElList = bookList.map(book => {
+            const bookEl = document.createElement('div');
+            bookEl.innerHTML = `
+          <h2></h2>
+          <img>
+          `;
+            bookEl.querySelector('h2').textContent = book.title;
+            bookEl.querySelector('img').src = book.pictureUri;
+            return bookEl;
+          });
+
+
+          document.querySelector('#searchResult').innerHTML = '';
+          document.querySelector('#searchResult').append(...bookElList);
         });
       });
     </script>
@@ -82,5 +95,6 @@
 
       <button type="submit">SEARCH</button>
     </form>
+    <section id="searchResult"></section>
   </body>
 </html>
