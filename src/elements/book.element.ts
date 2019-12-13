@@ -14,7 +14,22 @@ export class BookElement extends HTMLElement {
 
   connectedCallback() {
     this.attachShadow({mode: 'open'});
-    this.shadowRoot.innerHTML = `
+    this.shadowRoot.innerHTML = /* html */`
+    <style>
+      :host {
+        display: block;
+        border-style: solid;
+        border-radius: 20px;
+        border-width: 1px;
+        width: 100%;
+      }
+
+      @media (min-width: 600px) {
+        :host {
+          width: 300px;
+        }
+      }
+    </style>
     <h2></h2>
     <img>
     `;

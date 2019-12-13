@@ -4,9 +4,24 @@ import { BookElement, Book } from './book.element';
 
 class BookSearchElement extends HTMLElement {
   connectedCallback() {
-    this.attachShadow({mode: 'open'});
-    this.shadowRoot.innerHTML = `
-    <form id="searchForm">
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = /* html */ `
+    <style>
+      .book-list-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+
+      @media(orientation: landscape) {
+        .search-form {
+          display: none;
+        }
+      }
+
+    </style>
+    <form id="searchForm" class="search-form">
     <fieldset>
       <legend>Search Criteria</legend>
 
@@ -30,7 +45,7 @@ class BookSearchElement extends HTMLElement {
 
     <button type="submit">SEARCH</button>
   </form>
-  <section id="searchResult"></section>`;
+  <section id="searchResult" class="book-list-container"></section>`;
 
     const form = this.shadowRoot.querySelector('#searchForm');
     const searchResultEl = this.shadowRoot.querySelector('#searchResult');
