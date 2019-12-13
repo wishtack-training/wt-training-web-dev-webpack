@@ -14,7 +14,7 @@ class BookSearchElement extends HTMLElement {
         justify-content: space-evenly;
       }
 
-      @media(orientation: landscape) {
+      @media(max-width: 600px, orientation: landscape) {
         .search-form {
           display: none;
         }

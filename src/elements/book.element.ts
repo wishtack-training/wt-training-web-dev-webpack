@@ -17,11 +17,18 @@ export class BookElement extends HTMLElement {
     this.shadowRoot.innerHTML = /* html */`
     <style>
       :host {
-        display: block;
+        display: flex;
+        flex-direction: column;
         border-style: solid;
         border-radius: 20px;
         border-width: 1px;
+        overflow: hidden;
         width: 100%;
+      }
+
+      img {
+        flex: 1;
+        object-fit: cover;
       }
 
       @media (min-width: 600px) {
