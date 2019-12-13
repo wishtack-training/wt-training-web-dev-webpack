@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "module": "ESNext",
     "moduleResolution": "Node",
     "target": "es2015",
