@@ -1,4 +1,5 @@
-.idea
-.floo*
-/dist
+/.idea
+/.floo*
 /node_modules
+/dist
+/yarn-error.log
