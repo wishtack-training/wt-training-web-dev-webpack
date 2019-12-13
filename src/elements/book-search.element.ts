@@ -1,4 +1,6 @@
+import './book.element';
 import { createQueryString } from '../helpers/create-query-string';
+import { BookElement, Book } from './book.element';
 
 class BookSearchElement extends HTMLElement {
   connectedCallback() {
@@ -63,7 +65,7 @@ class BookSearchElement extends HTMLElement {
       );
       const data = await response.json();
 
-      const bookList = data.items.map(item => {
+      const bookList: Book[] = data.items.map(item => {
         return {
           id: item.id,
           title: item.volumeInfo.title,
@@ -72,13 +74,8 @@ class BookSearchElement extends HTMLElement {
       });
 
       const bookElList = bookList.map(book => {
-        const bookEl = document.createElement('div');
-        bookEl.innerHTML = `
-          <h2></h2>
-          <img>
-          `;
-        bookEl.querySelector('h2').textContent = book.title;
-        bookEl.querySelector('img').src = book.pictureUri;
+        const bookEl = document.createElement('mc-book') as BookElement;
+        bookEl.book = book;
         return bookEl;
       });
 
