@@ -2,7 +2,8 @@ import { createQueryString } from '../helpers/create-query-string';
 
 class BookSearchElement extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = `
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
     <form id="searchForm">
     <fieldset>
       <legend>Search Criteria</legend>
@@ -27,9 +28,10 @@ class BookSearchElement extends HTMLElement {
 
     <button type="submit">SEARCH</button>
   </form>
-  <section data-role="searchResult"></section>`;
+  <section id="searchResult"></section>`;
 
-    const form = this.querySelector('form');
+    const form = this.shadowRoot.querySelector('#searchForm');
+    const searchResultEl = this.shadowRoot.querySelector('#searchResult');
 
     form.addEventListener('submit', async event => {
       event.preventDefault();
@@ -80,8 +82,8 @@ class BookSearchElement extends HTMLElement {
         return bookEl;
       });
 
-      this.querySelector('[data-role=searchResult]').innerHTML = '';
-      this.querySelector('[data-role=searchResult]').append(...bookElList);
+      searchResultEl.innerHTML = '';
+      searchResultEl.append(...bookElList);
     });
   }
 }
